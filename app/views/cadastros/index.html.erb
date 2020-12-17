@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Lista de Cadastro</h2>
+
+<br>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-hover mb-3">
+    <thead>
+      <tr>
+        <th class="text-center">Nome</th>
+        <th class="text-center">CPF</th>
+        <th class="text-center">Telefone</th>
+        <th class="text-center">Email</th>
+        <th class="text-center" colspan="2"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @cadastros.each do |cadastro| %>
+        <tr>
+          <td><%= cadastro.nome %></td>
+          <td class="text-center"><%= cadastro.cpf %></td>
+          <td class="text-center"><%= cadastro.telefone %></td>
+          <td><%= cadastro.email %></td>
+          <td class="text-center"><%= link_to 'Edit', edit_cadastro_path(cadastro), class: 'btn btn-primary btn-sm text-white' %></td>
+          <td class="text-center"><%= link_to 'destroy', cadastro, method: :delete, class: 'btn btn-danger btn-sm text-white', data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Cadastro', new_cadastro_path %>

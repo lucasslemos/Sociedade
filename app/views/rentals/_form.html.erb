@@ -1,0 +1,29 @@
+<%= form_with(model: rental, local: true) do |form| %>
+  <% if rental.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+
+      <ul>
+      <% rental.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :movie_id %>
+    <%= form.text_field :movie_id %>
+  </div>
+  
+  <%= form.select :movie_id, Movie.all.collect {|m| [ m.name, m.id ] }, id: :rental_movie_id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
