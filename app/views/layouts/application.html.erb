@@ -61,6 +61,7 @@
         </li>
         <% end %>
       </ul>
+      <%= current_user.email %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
     </div>
   </nav>
@@ -69,7 +70,6 @@
 <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
   <div class="container">
-
     <%= yield %>
   </div>
 </main>
